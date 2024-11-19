@@ -4,7 +4,7 @@ import Cards from './Cards'
 
 const Main = () => {
   return (
-    <div className='px-10 py-7'>
+    <div className=''>
         <FilterSection/>
         <Cards/>
     </div>

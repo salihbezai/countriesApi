@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(req:NextApiRequest,res:NextApiResponse){
     const  { name } = req.query;
+    console.log("query name "+name)
     if(!name) res.status(404).json({error:"Country name must be provided as a single string."})
     try {
         const response = await fetch(`https://restcountries.com/v3.1/name/${name}`)

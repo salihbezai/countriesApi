@@ -6,6 +6,10 @@ import Navbar from "@/components/Navbar";
 import Provider from "@/components/Provider";
 
 
+import "react-loading-skeleton/dist/skeleton.css"
+import Wrapper from "@/components/Wrapper";
+
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -31,10 +35,15 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="light" >
-      <body className="bg-red-700 dark: bg-veryDarkBlueBg">
+      <body className="bg-veryLightGrayBg dark:bg-veryDarkBlueBg">
+      <Navbar/>
+
         <Provider>
-        <Navbar/>
+          <Wrapper >
+
         {children}
+        </Wrapper>
+
         </Provider>
       </body>
     </html>

@@ -18,15 +18,23 @@ const Cards = () => {
   });
 
 
-  if(isLoading) (<Skeleton height={5} count={5} className='my-4' />)
-  return (
+ 
+  return (      
+    
     <div className='grid grid-cols-4 gap-10 mt-8 
     mobile:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
      desktop:grid-cols-4'>
        {
-        data?.map((country:any,key:any)=>(
-          <Card country={country} key={key}/>
-        ))
+        isLoading?(
+          Array(20).fill(null).map(()=>(
+            <Skeleton height={400} width={400} count={1} baseColor='#fff' />
+          ))
+        ):(
+          data?.map((country:any,key:any)=>(
+            <Card country={country} key={key}/>
+          ))
+        )
+     
        }
 
     </div>

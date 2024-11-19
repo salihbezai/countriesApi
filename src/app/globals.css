@@ -7,16 +7,17 @@
 /* Import the Nunito Sans font from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 @layer base {
-/* Root variables based on the designer's colors */
-:root {
-  --dark-blue-elements: hsl(209, 23%, 22%);
-  --very-dark-blue-bg: hsl(207, 26%, 17%);
-  --very-dark-blue-text: hsl(200, 15%, 8%);
-  --dark-gray-input: hsl(0, 0%, 52%);
-  --very-light-gray-bg: hsl(0, 0%, 98%);
-  --white-text: hsl(0, 0%, 100%);
+  /* Root variables based on the designer's colors */
+  :root {
+    --dark-blue-elements: hsl(209, 23%, 22%);
+    --very-dark-blue-bg: hsl(207, 26%, 17%);
+    --very-dark-blue-text: hsl(200, 15%, 8%);
+    --dark-gray-input: hsl(0, 0%, 52%);
+    --very-light-gray-bg: hsl(0, 0%, 93%);
+    --white-text: hsl(0, 0%, 100%);
   
-  --background: 0 0% 100%;
+
+    --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -31,7 +32,7 @@
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 86% 97%; /* custom value */
-    --icon: 0 0% 52%;        
+    --icon: 0 0% 52%;
     --destructive-foreground: 0 74% 42%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
@@ -42,49 +43,45 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-}
+  }
 
-.dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 217.2 91.2% 59.8%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 224.3 76.3% 48%;
-  --chart-1: 220 70% 50%;
-  --chart-2: 160 60% 45%;
-  --chart-3: 30 80% 55%;
-  --chart-4: 280 65% 60%;
-  --chart-5: 340 75% 55%;
-}
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
 
-/* Apply the global font */
-body {
-  font-family: "Nunito Sans", sans-serif;
-}
+  /* Apply the global font */
+  body {
+    font-family: "Nunito Sans", sans-serif;
+  }
 
-/* Base styles */
-body,
-html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-
-
+  /* Base styles */
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }

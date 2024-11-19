@@ -26,7 +26,7 @@ const config: Config = {
   			veryDarkBlueBg: 'hsl(207, 26%, 17%)',
   			veryDarkBlueText: 'hsl(200, 15%, 8%)',
   			darkGrayInput: 'hsl(0, 0%, 52%)',
-  			veryLightGrayBg: 'hsl(0, 0%, 98%)',
+  			veryLightGrayBg: 'var(--very-light-gray-bg)',
   			whiteText: 'hsl(0, 0%, 100%)',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
