@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
  
 
-export const getSingleCountry=async(req:NextApiRequest,res:NextApiResponse)=>{
+export default async function handler(req:NextApiRequest,res:NextApiResponse){
     const  { name } = req.query;
     if(!name) res.status(404).json({error:"Country name must be provided as a single string."})
     try {
