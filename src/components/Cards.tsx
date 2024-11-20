@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useQuery } from "@tanstack/react-query";
 import Card from './Card';
 import Skeleton from 'react-loading-skeleton';
+import Link from 'next/link';
 
 const Cards = () => {
 
@@ -31,7 +32,8 @@ const Cards = () => {
           ))
         ):(
           data?.map((country:any,key:any)=>(
-            <Card country={country} key={key}/>
+            <Link href={`/country/${country.name.common}`}> <Card  country={country} key={key}/></Link>
+           
           ))
         )
      
