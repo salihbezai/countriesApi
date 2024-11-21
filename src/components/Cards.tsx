@@ -1,23 +1,21 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useQuery } from "@tanstack/react-query";
 import Card from './Card';
 import Skeleton from 'react-loading-skeleton';
 import Link from 'next/link';
 
-const Cards = () => {
+const Cards = ({countries,isLoading,error,searchTerm} :any) => {
 
 
-  const { data, error, isLoading } = useQuery(['countries'], async () => {
-    const response = await fetch('/api/countries');
-    if (!response.ok) {
-     
-      throw new Error('Failed to fetch countries');
-    }
-    const countreis = response.json()
-    return countreis;
-  });
+  
 
+
+   if(!isLoading && countries.length ===0 )return (
+      <div className='w-full text-veryDarkBlueText text-body h-72 text-center flex items-center justify-center'>
+        {`Sorry we couldn't find any matches for  ${searchTerm}`}
+      </div>
+    )
 
  
   return (      
@@ -31,10 +29,15 @@ const Cards = () => {
             <Skeleton height={400} width={400} count={1} baseColor='#fff' />
           ))
         ):(
-          data?.map((country:any,key:any)=>(
-            <Link href={`/country/${country.name.common}`}> <Card  country={country} key={key}/></Link>
-           
-          ))
+          
+            countries?.map((country:any,key:any)=>(
+              <Link key={country.cca3} href={`/country/${country.name.common}`}> 
+              <Card  country={country} key={country.cca3}/>
+              </Link>
+             
+            ))
+        
+          
         )
      
        }
