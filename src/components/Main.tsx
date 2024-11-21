@@ -17,6 +17,10 @@ const Main = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCountries, setFilteredCountries] = useState([]);
 
+  const [countriesByRegion, setCountriesByRegion] = useState([]);
+  const [isRegionSelected, setIsRegionSelected] = useState<boolean>(false);
+
+
   const { data, error, isLoading } = useQuery(["countries"], async () => {
     const response = await fetch("/api/countries");
     if (!response.ok) {
@@ -25,6 +29,7 @@ const Main = () => {
     const countries = await response.json();
     return countries;
   });
+
 
   // Set countries data when fetched
   useEffect(() => {
@@ -36,17 +41,46 @@ const Main = () => {
 
   // Filter countries when search term changes
   useEffect(() => {
-    if (!theCountries) return;
-
-    const filtered = theCountries.filter((country: any) => {
+    if (!theCountries && !isRegionSelected) return;
+    const filtered = (isRegionSelected ? countriesByRegion : theCountries).filter((country: any) => {
       const countryName = country.name?.common;
       if (typeof countryName !== "string") return false; // Ensure it's a string
       return countryName.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
+ 
     setFilteredCountries(filtered);
-  }, [searchTerm, theCountries]);
+  }, [searchTerm, theCountries,countriesByRegion]);
 
+
+  // api get countries by region
+  const getCoutriesOnRegion=async(region:string)=>{
+      try {
+          const response = await fetch(`/api/region/${region}`,{
+              method:'POST',
+              headers:{
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({region})
+          })
+          const data = await response.json();
+          if(response.ok){
+              setCountriesByRegion(data)
+              setIsRegionSelected(true)
+          }else{
+            setCountriesByRegion([])
+          }
+      } catch (error) {
+              console.log("errro "+error)
+      }
+     
+  
+  }
+
+  
+  const getCountriesByRegion = (value:string)=>{
+    getCoutriesOnRegion(value)
+  }
   return (
     <div className="">
       <div className="flex items-center justify-between sm:flex-row sm:items-center mobile:flex-col mobile:items-start mobile:space-y-3 gap-4">
@@ -61,19 +95,25 @@ const Main = () => {
           />
         </div>
         <div className="flex items-center bg-white rounded-sm px-4 py-2 border-none ">
-          <Select>
+          <Select onValueChange={getCountriesByRegion}>
             <SelectTrigger className="w-[180px] focus:outline-none focus:ring-0 border-none rounded-none">
               <SelectValue className="text-detail" placeholder="Filter by Region" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem className="text-detail" value="light">
-                Light
+              <SelectItem className="text-detail" value="Africa">
+                Africa
               </SelectItem>
-              <SelectItem className="text-detail" value="dark">
-                Dark
+              <SelectItem className="text-detail" value="America">
+                America
               </SelectItem>
-              <SelectItem className="text-detail" value="system">
-                System
+              <SelectItem className="text-detail" value="Asia">
+                Asia
+              </SelectItem>
+              <SelectItem className="text-detail" value="Europe">
+                Europe
+              </SelectItem>
+              <SelectItem className="text-detail" value="Oceania">
+                Oceania
               </SelectItem>
             </SelectContent>
           </Select>

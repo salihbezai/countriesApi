@@ -12,7 +12,7 @@ const Cards = ({countries,isLoading,error,searchTerm} :any) => {
 
 
    if(!isLoading && countries.length ===0 )return (
-      <div className='w-full text-veryDarkBlueText text-body h-72 text-center flex items-center justify-center'>
+      <div className=' text-veryDarkBlueText text-body h-72 text-center  flex items-center justify-center overflow-hidden'>
         {`Sorry we couldn't find any matches for  ${searchTerm}`}
       </div>
     )

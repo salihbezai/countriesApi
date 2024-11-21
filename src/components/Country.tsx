@@ -14,30 +14,36 @@ const page =   ({ name }: {name:string}) => {
 
 
     useEffect(()=>{
+        console.log("then name "+name)
         const getCountry=async()=>{
-            const response = await fetch('/api/country',{
-                method:'POST',
-                headers:{
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({name:name})
-            })
-            const data = await response.json();
-            if(response.ok){
-                setIsloading(false)
-                setCountry(data[0])
-                console.log("country "+country)
-            }else{
-                setIsloading(false)
-                setCountry(null)
+            try {
+                const response = await fetch(`/api/country/${name}`,{
+                    method:'POST',
+                    headers:{
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({name})
+                })
+                console.log("this fetches ")
+                const data = await response.json();
+                if(response.ok){
+                    setIsloading(false)
+                    setCountry(data[0])
+                    console.log("country "+country)
+                }else{
+                    setIsloading(false)
+                    setCountry(null)
+                }
+            } catch (error) {
+                    console.log("errro "+error)
             }
+           
         }
         getCountry()
     },[name])
     
-  
+    console.log("the country is "+JSON.stringify(country))
 
-     console.log(country)
     if(isLoading) return(
         <div role="status" className='flex justify-center items-center h-screen'>
             <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-veryDarkBlueText" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +62,7 @@ const page =   ({ name }: {name:string}) => {
                 Back
              </Link>
         </Button>
-        <div className='w-full py-5  mobile:flex-col flex mobile:items-start md:flex-row md:items-center lg:flex-row  md:gap-10 lg:gap-20'>
+        <div className='w-full py-5  mobile:flex-col flex mobile:items-start md:items-center lg:flex-row  md:gap-10 lg:gap-20'>
             <div className='w-full flex-1'>
                 <img className='w-full' src={country && country.flags.svg} alt={country ? country.name.common:'flag'} />
             </div>
@@ -105,6 +111,19 @@ const page =   ({ name }: {name:string}) => {
                             ))}</span>
                         </div>
                     
+                    </div>
+                
+                </div>
+
+                <div className='flex mobile:flex-col sm:flex-col md:flex-row'>
+                    <div className='flex flex-row items-center gap-2'>
+                    <span className='text-body  font-extralight mr-1'>Border Countries:</span>
+                    {
+                        country && country.borders &&country.borders.map((border)=>(
+                            <span className='text-body flex items-center justify-center  
+                            font-light bg-white rounded border-zinc-400 shadow-lg px-10 py-1 '>{border}</span>
+                        ))
+                    }
                     </div>
                 
                 </div>
