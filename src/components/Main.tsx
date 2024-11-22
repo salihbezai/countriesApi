@@ -64,7 +64,6 @@ const filter =()=>{
   // Filter countries when search term changes
   useEffect(() => {
     if (!theCountries) return;
-    console.log("selectritt "+selectedRegion)
     setFilteredCountries(filter());
   }, [searchTerm ,theCountries,countriesByRegion,selectedRegion]);
 
@@ -84,26 +83,25 @@ const filter =()=>{
     }
   }
 
-  
+
   return (
     <div className="">
-      <div className="flex items-center justify-between sm:flex-row sm:items-center mobile:flex-col mobile:items-start mobile:space-y-3 gap-4">
-        <div className="flex items-center mobile:w-full sm:w-1/3  bg-white rounded-sm px-4 py-2 border-none shadow-md">
-          <Search className="text-icon" size={18} />
+      <div className="flex  justify-between sm:flex-row  sm:items-center mobile:flex-col mobile:items-start  gap-2">
+        <div className="flex items-center mobile:w-full sm:w-1/3 dark:bg-darkBlueElements  bg-white rounded-sm px-4 py-2 border-none shadow-md">
+          <Search className="text-icon dark:text-white" size={18} />
           <Input
-            className="text-detail px-4 py-5 w-full h-8 border-transparent rounded-none focus-visible:ring-0"
+            className=" mobile:text-[0.8rem] px-4 py-5 ml-2 w-full h-8
+             dark:bg-darkBlueElements   border-transparent rounded-[4px] focus-visible:ring-0"
             type="text"
             placeholder="Search for a country…"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="flex  items-center bg-white dark:bg-darkblue py-4 px-4 
-        mobile:w-full sm:w-1/3 rounded-[4px]  w-full h-full shadow-md">
-        <select className="custom-select flex justify-between items-center w-full cursor-pointer px-4 py-2
-         " 
-        onClick={(e)=>setIsOpen(prev=>!prev)}  onChange={(e)=>getCountriesByRegion(e)}>
-              <option selected={selectedRegion === "All"} className="text-detail" value="All">
+        <div className="flex items-center mobile:w-full sm:w-1/3 dark:bg-darkBlueElements  bg-white rounded-sm px-4 py-2 border-none shadow-md">
+        <select className="custom-select flex justify-between items-center dark:bg-darkBlueElements w-full cursor-pointer px-4 py-2" 
+        onClick={(e)=>setIsOpen(prev=>!prev)}  onChange={(e)=>getCountriesByRegion(e)} defaultValue='All'>
+              <option selected={selectedRegion === "All"} className="text-detail " value="All">
                 All
               </option>
               <option selected={selectedRegion === "Africa"} className="text-detail" value="Africa">
@@ -121,7 +119,7 @@ const filter =()=>{
               <option selected={selectedRegion === "Oceania"} className="text-detail" value="Oceania">
                 Oceania
               </option>
-          </select>
+        </select>
           <ChevronRight className={`${isOpen ? 'rotate-0' : 'rotate-90'}`}/>
         </div>
       </div>

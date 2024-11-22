@@ -3,8 +3,8 @@ import React from 'react'
 
 const Card = ({country}:any) => {
   return (
-    <div className='w-full h-full bg-white dark:bg-darkblue hover:!scale-100 transition-all rounded-md overflow-hidden 
-    cursor-pointer shadow-md hover:shadow-lg translate-y-6 scale-75 max-h-[25rem] max-w-sm mx-auto'>
+    <div className='w-full h-full bg-white dark:bg-darkblue  transition-all rounded-md overflow-hidden 
+    cursor-pointer shadow-md hover:shadow-lg translate-y-6 hover:scale-105 max-h-[25rem] max-w-sm mx-auto'>
         <img className='w-full h-1/2  object-cover rounded-md' src={country.flags.svg} alt={country.flags.alt} />
         <div className='p-6 h-1/2 '>
             <h2  className='font-extrabold text-xl overflow-hidden'>{country.name.common}</h2>
