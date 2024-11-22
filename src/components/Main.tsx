@@ -13,7 +13,7 @@ const Main = () => {
 
   const [countriesByRegion, setCountriesByRegion] = useState([]);
   const [isRegionSelected, setIsRegionSelected] = useState<boolean>(false);
-  const [selectedRegion, setSelectRegion] = useState<string>('');
+  const [selectedRegion, setSelectRegion] = useState<string>('All');
 
 
   const [ isOpen, setIsOpen ] = useState(false)
@@ -36,11 +36,21 @@ const Main = () => {
   }, [data]);
   
 const filter =()=>{
-       return (theCountries).filter((country: any) => {
-        const countryName = country.name?.common;
-        if (typeof countryName !== "string") return false; // Ensure it's a string
-        return countryName.toLowerCase().includes(searchTerm.toLowerCase());
-      });
+      if(selectedRegion !== "All"){
+        
+        return (countriesByRegion).filter((country: any) => {
+          const countryName = country.name?.common;
+          if (typeof countryName !== "string") return false; // Ensure it's a string
+          return countryName.toLowerCase().includes(searchTerm.toLowerCase());
+        });
+      }else{
+        return (theCountries).filter((country: any) => {
+          const countryName = country.name?.common;
+          if (typeof countryName !== "string") return false; // Ensure it's a string
+          return countryName.toLowerCase().includes(searchTerm.toLowerCase());
+        });
+      }
+     
     }
 
     const filterRegion =(region:string)=>{
@@ -50,17 +60,31 @@ const filter =()=>{
        return countryRegion.toLowerCase().includes(region.toLowerCase());
      });
    }
+
   // Filter countries when search term changes
   useEffect(() => {
     if (!theCountries) return;
+    console.log("selectritt "+selectedRegion)
     setFilteredCountries(filter());
-  }, [searchTerm, theCountries,countriesByRegion]);
+  }, [searchTerm ,theCountries,countriesByRegion,selectedRegion]);
 
+
+  useEffect(() => {
+    setSelectRegion(selectedRegion)
+  }, [selectedRegion]);
  
   // get countries by region
   const getCountriesByRegion = (e:any)=>{
-    setFilteredCountries(filterRegion(e.target.value));
+    setSelectRegion(e.target.value)
+    const returnedCountries = filterRegion(e.target.value);
+    if(returnedCountries.length === 0){
+      setCountriesByRegion(theCountries)
+    }else{
+      setCountriesByRegion(returnedCountries);
+    }
   }
+
+  
   return (
     <div className="">
       <div className="flex items-center justify-between sm:flex-row sm:items-center mobile:flex-col mobile:items-start mobile:space-y-3 gap-4">
@@ -78,27 +102,27 @@ const filter =()=>{
         mobile:w-full sm:w-1/3 rounded-[4px]  w-full h-full shadow-md">
         <select className="custom-select flex justify-between items-center w-full cursor-pointer px-4 py-2
          " 
-        onClick={(e)=>setIsOpen(prev=>!prev)} value={selectedRegion} onChange={(e)=>getCountriesByRegion(e)}>
-              <option className="text-detail" value="All">
+        onClick={(e)=>setIsOpen(prev=>!prev)}  onChange={(e)=>getCountriesByRegion(e)}>
+              <option selected={selectedRegion === "All"} className="text-detail" value="All">
                 All
               </option>
-              <option className="text-detail" value="Africa">
+              <option selected={selectedRegion === "Africa"} className="text-detail" value="Africa">
                 Africa
               </option>
-              <option className="text-detail" value="America">
+              <option selected={selectedRegion === "America"} className="text-detail" value="America">
                 America
               </option>
-              <option className="text-detail" value="Asia">
+              <option selected={selectedRegion === "Asia"} className="text-detail" value="Asia">
                 Asia
               </option>
-              <option className="text-detail" value="Europe">
+              <option selected={selectedRegion === "Europe"} className="text-detail" value="Europe">
                 Europe
               </option>
-              <option className="text-detail" value="Oceania">
+              <option selected={selectedRegion === "Oceania"} className="text-detail" value="Oceania">
                 Oceania
               </option>
           </select>
-          <ChevronRight className={`${isOpen ? 'rotate-90' : 'rotate-0'}`}/>
+          <ChevronRight className={`${isOpen ? 'rotate-0' : 'rotate-90'}`}/>
         </div>
       </div>
 
