@@ -87,40 +87,41 @@ const filter =()=>{
   return (
     <div className="">
       <div className="flex  justify-between sm:flex-row  sm:items-center mobile:flex-col mobile:items-start  gap-2">
-        <div className="flex items-center mobile:w-full sm:w-1/3 dark:bg-darkBlueElements  bg-white rounded-sm px-4 py-2 border-none shadow-md">
-          <Search className="text-icon dark:text-white" size={18} />
+        <div className="flex items-center mobile:w-full sm:w-1/2 dark:bg-darkBlueElements  bg-white rounded-sm px-4 py-2 border-none shadow-md">
+          <Search className="text-icon text-veryDarkBlueText dark:text-white" size={18} />
           <Input
             className=" mobile:text-[0.8rem] px-4 py-5 ml-2 w-full h-8
-             dark:bg-darkBlueElements   border-transparent rounded-[4px] focus-visible:ring-0"
+             dark:bg-darkBlueElements   border-transparent rounded-[4px] focus-visible:ring-0 "
             type="text"
             placeholder="Search for a country…"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="flex items-center mobile:w-full sm:w-1/3 dark:bg-darkBlueElements  bg-white rounded-sm px-4 py-2 border-none shadow-md">
-        <select className="custom-select flex justify-between items-center dark:bg-darkBlueElements w-full cursor-pointer px-4 py-2" 
-        onClick={(e)=>setIsOpen(prev=>!prev)}  onChange={(e)=>getCountriesByRegion(e)} defaultValue='All'>
-              <option selected={selectedRegion === "All"} className="text-detail " value="All">
+        <div className="relative flex items-center mobile:w-full sm:w-1/5 dark:bg-darkBlueElements  bg-white rounded-sm  py-2 border-none shadow-md">
+        <select name="region" aria-label="Filter by Region" className="custom-select flex justify-between items-center outline-none dark:bg-darkBlueElements w-full cursor-pointer px-2 py-2 dark:text-whiteText" 
+        onClick={(e)=>setIsOpen(prev=>!prev)}  onChange={(e)=>getCountriesByRegion(e)} >
+              <option selected={selectedRegion === "All"} className="text-detail
+               text-veryDarkBlueText dark:text-whiteText border-none w-12" value="All">
                 All
               </option>
-              <option selected={selectedRegion === "Africa"} className="text-detail" value="Africa">
+              <option selected={selectedRegion === "Africa"} className="text-detail text-veryDarkBlueText dark:text-whiteText" value="Africa">
                 Africa
               </option>
-              <option selected={selectedRegion === "America"} className="text-detail" value="America">
+              <option selected={selectedRegion === "America"} className="text-detail text-veryDarkBlueText dark:text-whiteText" value="America">
                 America
               </option>
-              <option selected={selectedRegion === "Asia"} className="text-detail" value="Asia">
+              <option selected={selectedRegion === "Asia"} className="text-detail text-veryDarkBlueText dark:text-whiteText" value="Asia">
                 Asia
               </option>
-              <option selected={selectedRegion === "Europe"} className="text-detail" value="Europe">
+              <option selected={selectedRegion === "Europe"} className="text-detail text-veryDarkBlueText dark:text-whiteText" value="Europe">
                 Europe
               </option>
-              <option selected={selectedRegion === "Oceania"} className="text-detail" value="Oceania">
+              <option selected={selectedRegion === "Oceania"} className="text-detail text-veryDarkBlueText dark:text-whiteText" value="Oceania">
                 Oceania
               </option>
         </select>
-          <ChevronRight className={`${isOpen ? 'rotate-0' : 'rotate-90'}`}/>
+          <ChevronRight className={`absolute right-2 dark:text-whiteText ${isOpen ? 'rotate-0' : 'rotate-90'}`}/>
         </div>
       </div>
 

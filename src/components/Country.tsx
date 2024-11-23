@@ -57,7 +57,7 @@ const page =   ({ name }: {name:string}) => {
   return (
     <div className='w-full'>
         <Button variant="ghost" className='mt-2 px-4 py-2' >
-            <Link className='flex items-center' href='/'>
+            <Link className='flex items-center text-veryDarkBlueText dark:text-whiteText' href='/'>
                 <ArrowLeft className='mr-2'/>
                 Back
              </Link>
@@ -67,47 +67,47 @@ const page =   ({ name }: {name:string}) => {
                 <img className='w-full' src={country && country.flags.svg} alt={country ? country.name.common:'flag'} />
             </div>
             <div className='py-10 space-y-5 flex-1 flex-col items-center justify-center '>
-            <h1  className='font-extrabold md:text-2xl'>Algeria</h1>
+            <h1  className='font-extrabold md:text-2xl text-veryDarkBlueText dark:text-whiteText'>{country && country.name.common}</h1>
 
                 <div className='w-full flex  mobile:flex-col
                  md:flex-row md:gap-10  desktop:gap-20'>
                         
                     <div className='mt-3 md:text-body'>
                             <div className='flex items-center'>
-                                <span className='text-body font-extralight mr-1'>Native Name:</span>
-                                <span className='text-body  font-light'>{country && country.name.common}</span>
+                                <span className='text-body font-extralight mr-1 text-veryDarkBlueText dark:text-whiteText'>Native Name:</span>
+                                <span className='text-body  font-light text-veryDarkBlueText dark:text-whiteText'>{country && country.name.common}</span>
                             </div>
                             <div className='flex items-center'>
-                                <span className='text-body font-extralight mr-1'>Population:</span>
-                                <span className='text-body  font-light'>{country && country.population}</span>
+                                <span className='text-body font-extralight mr-1 text-veryDarkBlueText dark:text-whiteText'>Population:</span>
+                                <span className='text-body  font-light text-veryDarkBlueText dark:text-whiteText'>{country && country.population}</span>
                             </div>
                             <div className='flex items-center'>
-                                <span className='text-body font-extralight mr-1'>Region:</span>
-                                <span className='text-body  font-light'>{country && country.region}</span>
+                                <span className='text-body font-extralight mr-1 text-veryDarkBlueText dark:text-whiteText'>Region:</span>
+                                <span className='text-body  font-light text-veryDarkBlueText dark:text-whiteText'>{country && country.region}</span>
                             </div>
                             <div className='flex items-center'>
-                                <span className='text-body font-extralight mr-1'>Sub Region:</span>
-                                <span className='text-body  font-light'>{country && country.subregion}</span>
+                                <span className='text-body font-extralight mr-1 text-veryDarkBlueText dark:text-whiteText'>Sub Region:</span>
+                                <span className='text-body  font-light text-veryDarkBlueText dark:text-whiteText'>{country && country.subregion}</span>
                             </div>
                             <div className='flex items-center'>
-                                <span className='text-body font-extralight mr-1'>Capital:</span>
-                                <span className='text-body  font-light'>{country && country.capital}</span>
+                                <span className='text-body font-extralight mr-1 text-veryDarkBlueText dark:text-whiteText'>Capital:</span>
+                                <span className='text-body  font-light text-veryDarkBlueText dark:text-whiteText'>{country && country.capital}</span>
                             </div>
                     </div>
 
                     <div className='mt-3'>
                         <div className='flex items-center'>
-                            <span className='text-body font-extralight mr-1'>Top Level Domain:</span>
-                            <span className='text-body  font-light'>{country && country.tld[0]}</span>
+                            <span className='text-body font-extralight mr-1 text-veryDarkBlueText dark:text-whiteText'>Top Level Domain:</span>
+                            <span className='text-body  font-light text-veryDarkBlueText dark:text-whiteText'>{country && country.tld[0]}</span>
                         </div>
                         <div className='flex items-center'>
-                            <span className='text-body font-extralight mr-1'>Currencies:</span>
-                            <span className='text-body  font-light'>{country && Object.keys(country.currencies)[0]}</span>
+                            <span className='text-body font-extralight mr-1 text-veryDarkBlueText dark:text-whiteText'>Currencies:</span>
+                            <span className='text-body  font-light text-veryDarkBlueText dark:text-whiteText'>{country && Object.keys(country.currencies)[0]}</span>
                         </div>
                         <div className='flex items-center'>
-                            <span className='text-body font-extralight mr-1'>Languages:</span>
-                            <span className='text-body  font-light'>{country && Object.keys(country.languages).map((lang,key)=>(
-                                <span key={key} className='mr-1'>{lang.charAt(0).toUpperCase() + lang.slice(1)}.</span>
+                            <span className='text-body font-extralight mr-1 text-veryDarkBlueText dark:text-whiteText'>Languages:</span>
+                            <span className='text-body  font-light text-veryDarkBlueText dark:text-whiteText'>{country && Object.keys(country.languages).map((lang,key)=>(
+                                <span key={key} className='mr-1 text-veryDarkBlueText dark:text-whiteText'>{lang.charAt(0).toUpperCase() + lang.slice(1)}.</span>
                             ))}</span>
                         </div>
                     
@@ -117,12 +117,17 @@ const page =   ({ name }: {name:string}) => {
 
                 <div className='flex mobile:flex-col sm:flex-col md:flex-row'>
                     <div className='flex flex-row items-center gap-2'>
-                    <span className='text-body  font-extralight mr-1'>Border Countries:</span>
+                    <span className='text-body  font-extralight mr-1 text-veryDarkBlueText dark:text-whiteText'>Border Countries:</span>
                     {
-                        country && country.borders &&country.borders.map((border)=>(
-                            <span className='text-body flex items-center justify-center  
-                            font-light bg-white rounded border-zinc-400 shadow-lg px-10 py-1 '>{border}</span>
-                        ))
+                      country && country.borders ? (country.borders.map((border)=>(
+                        <span className='text-body flex items-center justify-center  
+                        font-light bg-white rounded border-zinc-400 shadow-lg px-10 py-1
+                         text-veryDarkBlueText dark:text-whiteText'>{border}</span>
+                    ))):(
+                        <span className='text-veryDarkBlueText dark:text-whiteText'>No Information</span>
+                    )
+
+                        
                     }
                     </div>
                 
