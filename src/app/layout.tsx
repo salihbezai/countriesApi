@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -8,6 +7,7 @@ import Provider from "@/components/Provider";
 
 import "react-loading-skeleton/dist/skeleton.css"
 import Wrapper from "@/components/Wrapper";
+import { Providers } from "./providers";
 
 
 const geistSans = localFont({
@@ -34,17 +34,21 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en" className="light" >
+    <html lang="en" className="light" suppressHydrationWarning >
       <body className="bg-veryLightGrayBg dark:bg-veryDarkBlueBg">
-      <Navbar/>
+        <Providers>
+          
+        <Navbar/>
 
-        <Provider>
-          <Wrapper >
-
-        {children}
-        </Wrapper>
+         <Provider>
+           <Wrapper >
+       
+            {children}
+          </Wrapper>
 
         </Provider>
+        </Providers>
+
       </body>
     </html>
   );
