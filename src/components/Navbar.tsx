@@ -30,13 +30,15 @@ const Navbar = () => {
         {
           selectedMode === 'dark' ?(
             <span className='flex flex-row items-center gap-3'>
-            <Moon className='dark:text-white   text-veryDarkBlueText '/>
-            Dark Mode
+              <Sun className='dark:text-white text-veryDarkBlueText '/>
+             Light Mode
+
             </span>
           ):(
             <span id='sunIcon' className='flex flex-row items-center gap-3'>
-             <Sun className='dark:text-white text-veryDarkBlueText '/>
-             Light Mode
+       
+             <Moon className='dark:text-white   text-veryDarkBlueText '/>
+             Dark Mode
             </span>
    
           )

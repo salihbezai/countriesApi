@@ -1,11 +1,10 @@
 
 "use client"
 import { Button } from '@/components/ui/button'
-import {  ArrowLeft, LoaderIcon } from 'lucide-react'
+import {  ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {  useEffect, useState } from 'react'
-import Skeleton from 'react-loading-skeleton'
 
 
 const page =   ({ name }: {name:string}) => {
@@ -123,7 +122,7 @@ const page =   ({ name }: {name:string}) => {
                         font-light cursor-pointer bg-white rounded border-zinc-400 shadow-lg px-10 py-1
                          text-veryDarkBlueText dark:text-veryDarkBlueText hover:opacity-80 active:scale-95'>{border}</span>
                     ))):(
-                        <span className='text-veryDarkBlueText dark:text-veryDarkBlueText'>No Information</span>
+                        <span className='text-veryDarkBlueText dark:text-whiteText'>No Information</span>
                     )
 
                         

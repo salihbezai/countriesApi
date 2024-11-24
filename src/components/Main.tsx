@@ -24,6 +24,7 @@ const Main = () => {
       throw new Error("Failed to fetch countries");
     }
     const countries = await response.json();
+
     return countries;
   });
 
@@ -87,11 +88,11 @@ const filter =()=>{
   return (
     <div className="">
       <div className="flex  justify-between sm:flex-row  sm:items-center mobile:flex-col mobile:items-start  gap-2">
-        <div className="flex items-center mobile:w-full sm:w-1/2 dark:bg-darkBlueElements  bg-white rounded-sm px-4 py-2 border-none shadow-md">
+        <div className="flex items-center mobile:w-full sm:w-[40%]   dark:bg-darkBlueElements  bg-white rounded-sm px-4 py-2 border-none shadow-md">
           <Search className="text-icon text-veryDarkBlueText dark:text-white" size={18} />
           <Input
-            className=" mobile:text-[0.8rem] px-4 py-5 ml-2 w-full h-8
-             dark:bg-darkBlueElements   border-transparent rounded-[4px] focus-visible:ring-0 "
+            className=" mobile:text-[0.8rem] px-4 py-5 ml-2 w-full h-8 
+             dark:text-whiteText  placeholder:text-darkGrayInput  text-darkBlueElements   border-transparent rounded-[4px] focus-visible:ring-0 "
             type="text"
             placeholder="Search for a country…"
             value={searchTerm}
