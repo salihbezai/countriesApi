@@ -9,7 +9,7 @@ const config: Config = {
   ],
   theme: {
   	container: {
-  		//center: 'true',
+  		center: 'true',
   		padding: '2rem',
   		screens: {
   			mobile: '375px',
@@ -83,7 +83,7 @@ const config: Config = {
   			bold: '800'
   		},
   		container: {
-  			//center: 'true',
+  			center: 'true',
   			padding: '2rem',
   			screens: {
   				'2xl': '1400px'
